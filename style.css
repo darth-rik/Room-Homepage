@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+
+	/* ## Colors
+
+### Primary */
+
+	--color-Dark-Gray: hsl(0, 0%, 63%);
+	--color-Black: hsl(0, 0%, 0%);
+	--color-White: hsl(0, 0%, 100%);
+	--color-Very-Dark-Gray: hsl(0, 0%, 27%);
+}
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 1.2rem;
+	font-family: "Spartan";
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(2, min-content);
+}
+
+.hero {
+	background-color: blue;
+	grid-column: 1 / span 4;
+}
+.header {
+	background-color: lawngreen;
+	grid-column: 5/-1;
+}
+.image-1 {
+	background-color: lightcoral;
+	grid-row: 2;
+	grid-column: 1 / span 2;
+}
+.about {
+	background-color: lightpink;
+	grid-row: 2;
+	grid-column: 3 / span 3;
+}
+.image-2 {
+	background-color: magenta;
+	grid-row: 2;
+	grid-column: 6/-1;
+}

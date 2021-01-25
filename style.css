@@ -31,25 +31,156 @@ body {
 }
 
 .hero {
-	background-color: blue;
 	grid-column: 1 / span 4;
+	position: relative;
+	grid-row: 1;
+}
+
+.slides {
 }
 .header {
-	background-color: lawngreen;
 	grid-column: 5/-1;
+	grid-row: 1;
+	padding: 8rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.nav {
+	position: absolute;
+	padding: 8rem;
+	display: flex;
+	align-items: center;
+	color: var(--color-White);
+}
+.nav h2 {
+	font-size: 2.5rem;
+}
+
+.links {
+	display: flex;
+	text-decoration: none;
+	list-style: none;
+	font-size: 1.5rem;
+	margin-left: 8rem;
+}
+li {
+	margin-right: 5rem;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+li:hover {
+	padding-bottom: 2rem;
+	border-bottom: 2px solid var(--color-White);
+}
+.slide-btn {
+	grid-column: 5/6;
+	grid-row: 1;
+	align-self: flex-end;
+
+	z-index: 2;
+
+	height: 10rem;
+	background-color: var(--color-Black);
+	display: flex;
+	justify-content: space-between;
+}
+button {
+	width: 100%;
+	background-color: currentColor;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+button:hover {
+	background-color: var(--color-Very-Dark-Gray);
+}
+button img {
+	height: 2rem;
+	width: 2rem;
+}
+.slides {
+	height: 80rem;
+}
+.header-slide-1 {
+	/* display: none
+	opacity: 0; */
+}
+.header-slide-2 {
+	display: none;
+}
+.header-slide-3 {
+	display: none;
+}
+.header-details {
+	display: grid;
+
+	gap: 3rem;
+	transition: all 0.2s;
+}
+.header__primary {
+	font-size: 5rem;
+	margin-bottom: 4rem;
+}
+.header__secondary {
+	font-size: 1.4rem;
+	color: var(--color-Dark-Gray);
+	margin-bottom: 4rem;
+	line-height: 1.8;
+}
+.cta {
+	display: flex;
+	align-items: center;
+	justify-items: center;
+}
+.cta h3 {
+	font-size: 1.4rem;
+	letter-spacing: 1.6rem;
+	text-transform: uppercase;
+	margin-right: 4rem;
+	cursor: pointer;
+}
+.cta h3:hover {
+	color: var(--color-Dark-Gray);
+}
+.cta img {
+	width: 5rem;
 }
 .image-1 {
-	background-color: lightcoral;
 	grid-row: 2;
 	grid-column: 1 / span 2;
+	/* background-image: url(./images/image-about-dark.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;*/
+}
+img {
+	width: 100%;
+	/* object-fit: cover; */
+	height: 100%;
 }
 .about {
-	background-color: lightpink;
 	grid-row: 2;
 	grid-column: 3 / span 3;
+	display: flex;
+	justify-items: center;
+	flex-direction: column;
+	padding: 8rem;
+}
+.about__header {
+	text-transform: uppercase;
+	letter-spacing: 0.8rem;
+	margin-bottom: 3rem;
+}
+.about__details {
+	font-size: 1.4rem;
+	color: var(--color-Dark-Gray);
+	line-height: 1.8;
 }
 .image-2 {
-	background-color: magenta;
 	grid-row: 2;
 	grid-column: 6/-1;
+	/* background-image: url(./images/image-about-light.jpg);
+	background-repeat: no-repeat;
+	background-size: cover; */
 }

@@ -21,19 +21,32 @@
 		<title>Frontend Mentor | Room homepage</title>
 
 		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-		<!-- <style>
+		<style>
 			.attribution {
-				font-size: 11px;
+				font-size: 14px;
 				text-align: center;
 			}
 			.attribution a {
 				color: hsl(228, 45%, 44%);
 			}
-		</style> -->
+		</style>
 	</head>
 	<body>
 		<div class="grid-container">
 			<section class="hero">
+				<div class="mobile-nav">
+					<img class="open" src="./images/icon-hamburger.svg" alt="" />
+				</div>
+				<div class="mobile-nav-open">
+					<img class="close" src="./images/icon-close.svg" alt="" />
+
+					<ul class="mobile-links">
+						<li>Home</li>
+						<li>Shop</li>
+						<li>About</li>
+						<li>Contact</li>
+					</ul>
+				</div>
 				<div class="nav">
 					<h2 class="logo">room</h2>
 					<ul class="links">
@@ -43,15 +56,15 @@
 						<li>Contact</li>
 					</ul>
 				</div>
-				<div class="slides">
-					<img class="slide-img" src="images/desktop-image-hero-1.jpg" alt="" />
+				<div class="slides-1 slides">
+					<!-- <img class="slide-img" src="images/desktop-image-hero-1.jpg" alt="" /> -->
 				</div>
-				<!-- <div class="slides">
-					<img class="slide-img" src="images/desktop-image-hero-2.jpg" alt="" />
+				<div class="slides-2 slides">
+					<!-- <img class="slide-img" src="images/desktop-image-hero-2.jpg" alt="" /> -->
 				</div>
-				<div class="slides">
-					<img class="slide-img" src="images/desktop-image-hero-3.jpg" alt="" />
-				</div> -->
+				<div class="slides-3 slides">
+					<!-- <img class="slide-img" src="images/desktop-image-hero-3.jpg" alt="" /> -->
+				</div>
 			</section>
 			<div class="slide-btn">
 				<button class="btn-left">
@@ -63,7 +76,7 @@
 			</div>
 			<section class="header">
 				<div class="header-details">
-					<div class="header-slide-1">
+					<div class="header-slide-0 header-slides">
 						<h1 class="header__primary">
 							Discover innovative ways to decorate
 						</h1>
@@ -75,30 +88,30 @@
 							what you love.
 						</p>
 					</div>
-					<!-- <div class="header-slide-2">
+					<div class="header-slide-1 header-slides">
 						<h1 class="header__primary">
-							Discover innovative ways to decorate
+							We are available all across the globe
 						</h1>
 						<p class="header__secondary">
-							We provide unmatched quality, comfort, and style for property
-							owners across the country. Our experts combine form and function
-							in bringing your vision to life. Create a room in your own style
-							with our collection and make your property a reflection of you and
-							what you love.
+							With stores all over the world, it's easy for you to find
+							furniture for your home or place of business. Locally, we’re in
+							most major cities throughout the country. Find the branch nearest
+							you using our store locator. Any questions? Don't hesitate to
+							contact us today.
 						</p>
 					</div>
-					<div class="header-slide-3">
+					<div class="header-slide-2 header-slides">
 						<h1 class="header__primary">
-							Discover innovative ways to decorate
+							Manufactured with the best materials
 						</h1>
 						<p class="header__secondary">
-							We provide unmatched quality, comfort, and style for property
-							owners across the country. Our experts combine form and function
-							in bringing your vision to life. Create a room in your own style
-							with our collection and make your property a reflection of you and
-							what you love.
+							Our modern furniture store provide a high level of quality. Our
+							company has invested in advanced technology to ensure that every
+							product is made as perfect and as consistent as possible. With
+							three decades of experience in this industry, we understand what
+							customers want for their home and office.
 						</p>
-					</div> -->
+					</div>
 				</div>
 				<div class="cta">
 					<h3>Shop now</h3>
@@ -124,22 +137,74 @@
 				<img src="images/image-about-light.jpg" alt="" />
 			</section>
 		</div>
-		<!--   About Contact   We are available
-		all across the globe With stores all over the world, it's easy for you to
-		find furniture for your home or place of business. Locally, we’re in most
-		major cities throughout the country. Find the branch nearest you using our
-		store locator. Any questions? Don't hesitate to contact us today. Shop now
-		Manufactured with the best materials Our modern furniture store provide a
-		high level of quality. Our company has invested in advanced technology to
-		ensure that every product is made as perfect and as consistent as possible.
-		With three decades of experience in this industry, we understand what
-		customers want for their home and office. Shop now   -->
 
-		<!-- <div class="attribution">
+		<div class="attribution">
 			Challenge by
 			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
 				>Frontend Mentor</a
-			>. Coded by <a href="#">Your Name Here</a>.
-		</div> -->
+			>. Coded by <a href="#">Debanjit Sengupta</a>.
+		</div>
+		<script>
+			const slides = document.querySelectorAll(".slides");
+			const btnLeft = document.querySelector(".btn-left");
+			const btnRight = document.querySelector(".btn-right");
+			const headerSlides = document.querySelectorAll(".header-slides");
+			const btnOpen = document.querySelector(".open");
+			const btnClose = document.querySelector(".close");
+			const mobileNav = document.querySelector(".mobile-nav-open");
+
+			let currentSlide = 0;
+			const maxSlide = slides.length;
+
+			const resetHeader = () =>
+				headerSlides.forEach((slide) => {
+					slide.style.display = "none";
+				});
+
+			const goToSlide = (slide) => {
+				slides.forEach((s, i) => {
+					s.style.transform = `translate(${100 * (i - slide)}%)`;
+				});
+				resetHeader();
+
+				document.querySelector(`.header-slide-${slide}`).style.display =
+					"block";
+			};
+			goToSlide(0);
+
+			const nextSlide = () => {
+				if (currentSlide === maxSlide - 1) {
+					currentSlide = 0;
+				} else {
+					currentSlide++;
+				}
+
+				goToSlide(currentSlide);
+			};
+
+			const prevSlide = () => {
+				if (currentSlide === 0) {
+					currentSlide = maxSlide - 1;
+				} else {
+					currentSlide--;
+				}
+
+				goToSlide(currentSlide);
+			};
+
+			btnRight.addEventListener("click", nextSlide);
+
+			btnLeft.addEventListener("click", prevSlide);
+
+			btnOpen.addEventListener("click", () => {
+				mobileNav.style.opacity = "1";
+				mobileNav.style.height = "20rem";
+			});
+
+			btnClose.addEventListener("click", () => {
+				mobileNav.style.opacity = "0";
+				mobileNav.style.height = "0rem";
+			});
+		</script>
 	</body>
 </html>
